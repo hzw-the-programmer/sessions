@@ -15,3 +15,5 @@ require (
 	github.com/memcachier/mc v2.0.1+incompatible
 	github.com/quasoft/memstore v0.0.0-20191010062613-2bce066d2b0b
 )
+
+replace github.com/boj/redistore => github.com/hzw-the-programmer/redistore v0.0.0-20210228091736-ef3fce14504e

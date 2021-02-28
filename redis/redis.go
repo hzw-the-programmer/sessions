@@ -5,7 +5,6 @@ import (
 
 	"github.com/boj/redistore"
 	"github.com/gin-contrib/sessions"
-	"github.com/gomodule/redigo/redis"
 )
 
 type Store interface {
@@ -39,17 +38,6 @@ func NewStore(size int, network, address, password string, keyPairs ...[]byte) (
 // Ref: https://godoc.org/github.com/boj/redistore#NewRediStoreWithDB
 func NewStoreWithDB(size int, network, address, password, DB string, keyPairs ...[]byte) (Store, error) {
 	s, err := redistore.NewRediStoreWithDB(size, network, address, password, DB, keyPairs...)
-	if err != nil {
-		return nil, err
-	}
-	return &store{s}, nil
-}
-
-// NewStoreWithPool instantiates a RediStore with a *redis.Pool passed in.
-//
-// Ref: https://godoc.org/github.com/boj/redistore#NewRediStoreWithPool
-func NewStoreWithPool(pool *redis.Pool, keyPairs ...[]byte) (Store, error) {
-	s, err := redistore.NewRediStoreWithPool(pool, keyPairs...)
 	if err != nil {
 		return nil, err
 	}
